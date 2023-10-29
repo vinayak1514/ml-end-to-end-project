@@ -1,0 +1,5 @@
+[2023-10-29 17:37:41,980] 23 root - INFO - Data Ingestion start
+[2023-10-29 17:37:42,162] 26 root - INFO - Read dataset as DataFrame
+[2023-10-29 17:37:43,293] 30 root - INFO - Saved the raw data in artifacts folder
+[2023-10-29 17:37:43,342] 33 root - INFO - train test split completed
+[2023-10-29 17:37:44,469] 37 root - INFO - Data ingestion completed

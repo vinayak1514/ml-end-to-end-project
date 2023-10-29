@@ -94,9 +94,3 @@ class DataTransformation:
         except Exception as e:
             logging.info("Exception occured in the initiate_datatransformation")
             raise CustomException(e,sys)
-if __name__ == 'main':
-    obj = DataIngestion()
-    train_data ,test_data = obj.initiate_data_ingestion()
-
-    data_transformation = DataTransformation()
-    data_transformation.initialize_data_transformation(train_data,test_data)

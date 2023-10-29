@@ -36,4 +36,5 @@ class DataIngestion:
             test_data.to_csv(self.data_ingestion_config.test_data_path,index=False)
             logging.info('Data ingestion completed')
         except Exception as e:
+            logging.info('error in data ingestion part')
             raise CustomException(e,sys)
