@@ -19,6 +19,6 @@ setup(
     version='0.0.1',
     author='vinayak',
     author_email='jangirvinayak0001@gmail.com',
-    install_requires=["scikit-learn","pandas","numpy"],
+    install_requires=get_requirements('requirements.txt'),
     packages=find_packages()
 )
