@@ -1,6 +1,6 @@
 import sys
 import os
-from src.logger import logging
+from src.DimondPricePrediction.logger import logging
 
 class CustomException(Exception):
     def __init__(self,error_message,error_details:sys):
