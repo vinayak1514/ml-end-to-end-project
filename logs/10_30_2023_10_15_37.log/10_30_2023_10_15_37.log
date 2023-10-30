@@ -1,0 +1,25 @@
+[2023-10-30 10:15:38,504] 23 root - INFO - Data Ingestion start
+[2023-10-30 10:15:38,701] 26 root - INFO - Read dataset as DataFrame
+[2023-10-30 10:15:39,867] 30 root - INFO - Saved the raw data in artifacts folder
+[2023-10-30 10:15:39,902] 33 root - INFO - train test split completed
+[2023-10-30 10:15:41,053] 37 root - INFO - Data ingestion completed
+[2023-10-30 10:15:41,264] 66 root - INFO - read train and test data complete
+[2023-10-30 10:15:41,272] 67 root - INFO - Train Dataframe Head : 
+       id  carat        cut color clarity  depth  table     x     y     z  price
+0   56521   1.24  Very Good     J     SI2   62.1   58.0  6.80  6.84  4.26   5091
+1  143852   0.31      Ideal     D     VS2   62.0   56.0  4.36  4.41  2.72    733
+2    8295   1.22    Premium     G     VS1   61.8   58.0  6.84  6.87  4.24   9225
+3  114402   0.30  Very Good     F     VS2   63.3   57.0  4.28  4.25  2.69    605
+4   95164   0.41    Premium     G     VS2   60.2   59.0  4.84  4.78  2.89   1061
+[2023-10-30 10:15:41,274] 68 root - INFO - Test Dataframe Head : 
+       id  carat    cut color clarity  depth  table     x     y     z  price
+0   53031   0.32  Ideal     H     VS1   61.6   55.0  4.40  4.43  2.72    672
+1    4862   0.41  Ideal     D     VS2   61.2   57.0  4.82  4.79  2.94    983
+2  118653   0.30  Ideal     H     VS2   60.9   57.0  4.32  4.35  2.64    491
+3   84919   1.22  Ideal     H     SI2   61.1   56.0  6.87  6.91  4.21   5219
+4  175655   0.39  Ideal     F    VVS1   60.9   55.0  4.73  4.76  2.89   1383
+[2023-10-30 10:15:41,274] 25 root - INFO - Data Transformation Started
+[2023-10-30 10:15:41,274] 35 root - INFO - pipeline started
+[2023-10-30 10:15:41,632] 84 root - INFO - Applying preprocessing object on training and testing datasets.
+[2023-10-30 10:15:41,653] 22 root - INFO - Splitting Dependent and Independent variables from train and test data
+[2023-10-30 10:15:42,193] 37 root - INFO - Model Report : {'LinearRegression': 0.9368195272478739, 'Lasso': 0.9368190260602673, 'Ridge': 0.9368200405196381, 'Elasticnet': 0.8566388137285021}
