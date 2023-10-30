@@ -10,7 +10,6 @@ from src.DimondPricePrediction.exception import CustomException
 
 
 
-@dataclass
 class DataIngestionConfig:
     raw_data_path:str = os.path.join('artifacts','raw.csv')
     train_data_path:str = os.path.join('artifacts','train.csv')
@@ -19,6 +18,7 @@ class DataIngestionConfig:
 class DataIngestion:
     def __init__(self):
         self.data_ingestion_config = DataIngestionConfig()
+
     def initiate_data_ingestion(self):
         logging.info('Data Ingestion start')
         try:
@@ -35,6 +35,10 @@ class DataIngestion:
             train_data.to_csv(self.data_ingestion_config.train_data_path,index=False)
             test_data.to_csv(self.data_ingestion_config.test_data_path,index=False)
             logging.info('Data ingestion completed')
+            return (
+                self.data_ingestion_config.train_data_path,
+                self.data_ingestion_config.test_data_path
+            )
         except Exception as e:
             logging.info('error in data ingestion part')
             raise CustomException(e,sys)

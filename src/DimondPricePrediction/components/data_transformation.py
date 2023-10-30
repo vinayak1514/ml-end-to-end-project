@@ -13,7 +13,6 @@ from src.DimondPricePrediction.logger import logging
 from src.DimondPricePrediction.exception import CustomException
 from src.DimondPricePrediction.utils.utils import save_object
 from src.DimondPricePrediction.components.data_ingestion import DataIngestion
-
 @dataclass
 class DataTransformationConfig:
     preprocessor_obj_file_path = os.path.join('artifacts','preprocessor.pkl')
@@ -36,14 +35,16 @@ class DataTransformation:
             logging.info('pipeline started')
             num_pipeline = Pipeline(
                 steps=[
-                    ('imputer',SimpleImputer(strategy='mean')),
+                    ('imputer',SimpleImputer(strategy='median')),
                     ('scaler',StandardScaler())
                 ]
             )
             cat_pipeline = Pipeline(
                 steps=[
-                    ('simple',SimpleImputer()),
-                    ('ordinal',OrdinalEncoder(cut_categories,color_categories,clarity_categories))
+                    ('imputer',SimpleImputer(strategy='most_frequent')),
+                    ('ordinal',OrdinalEncoder(categories=[cut_categories,color_categories,clarity_categories])),
+                    ('scaler',StandardScaler())
+
                 ]
             )
             preprocessor = ColumnTransformer(
@@ -57,6 +58,7 @@ class DataTransformation:
         except Exception as e:
             logging.info("Exception occured in the initiate_datatransformation")
             raise CustomException(e,sys)
+
     def initialize_data_transformation(self,train_path,test_path):
         try:
             train_df = pd.read_csv(train_path)
@@ -77,7 +79,7 @@ class DataTransformation:
             target_feature_test_df = test_df[target_column_name]
 
             input_feature_train_arr = preprocessing_obj.fit_transform(input_feature_train_df,target_feature_train_df)
-            input_feature_test_arr = preprocessing_obj.transform(input_feature_train_df,target_feature_train_df)
+            input_feature_test_arr = preprocessing_obj.transform( input_feature_test_df)
 
             logging.info("Applying preprocessing object on training and testing datasets.")
             train_arr = np.c_[input_feature_train_arr, np.array(target_feature_train_df)]
@@ -94,3 +96,4 @@ class DataTransformation:
         except Exception as e:
             logging.info("Exception occured in the initiate_datatransformation")
             raise CustomException(e,sys)
+
