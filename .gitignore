@@ -1,2 +1,4 @@
 artifacts
 venv
+DimondPricePrediction.egg-info
+logs
